@@ -4,14 +4,15 @@ from time import sleep
 while True:
     interface()
     user = Menu()
-    '''resp = leiaEnt('Escolha uma opção: ')
+    resp = leiaEnt('Escolha uma opção: ')
     if resp == 1:
-        pass
+        user.adicionar('Resident Evil', '31.05.2020', '15h22')
     elif resp == 2:
-        pass
+        user.deletar('Resident Evil')
     elif resp == 3:
-        pass
+        user.pesquisar('Resident Evil')
+    elif resp == 4:
+        user.listar()
     else:
-        break'''
+        break
     sleep(1)
-    break
