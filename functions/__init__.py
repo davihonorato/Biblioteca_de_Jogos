@@ -40,24 +40,13 @@ class Menu:
                 print(i)
 
     def listar(self):
-        for nome in self.__lista['jogos']:
-            print(nome)
-            for i in self.__lista['jogos'][nome].values():
-                print(i)
-
-
-'''def atualizar():  # verifica se o arquivo existe (caso não encontre, cria o arquivo)
-    try:
-        arq = open('jogos.txt', 'rt')
-    except:
-        try:
-            arq = open('jogos.txt', 'wt+')
-        except:
-            print('Ocorreu um erro ao criar o arquivo.')
+        if self.__lista['jogos'] == {}:
+            print('A lista está vazia.')
         else:
-            arq.close()
-    else:
-        arq.close()'''
+            for nome in self.__lista['jogos']:
+                print(nome)
+                for i in self.__lista['jogos'][nome].values():
+                    print(i)
 
 
 def leiaEnt(txt):  # Lê uma entrada e verifica se ela está dentro do parâmetro.
