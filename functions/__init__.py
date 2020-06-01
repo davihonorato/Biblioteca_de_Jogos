@@ -1,3 +1,6 @@
+from operator import itemgetter
+
+
 class Arquivo:
     def __init__(self, nome='', data='', tempo=''):
         self.nome = nome
@@ -37,6 +40,7 @@ class Biblioteca:
         if vazio(self.__lista):  # Lista vazia
             return
         else:
+            self.__lista = sorted(self.__lista['jogos'].items(), key=itemgetter(0))  # Ordena a lista em ordem alfabética
             for nome in self.__lista['jogos']:
                 print(nome)
                 for i in self.__lista['jogos'][nome].values():
