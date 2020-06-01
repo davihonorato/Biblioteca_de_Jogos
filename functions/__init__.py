@@ -7,46 +7,66 @@ def interface():  # Mostra o menu com todas as opções de interação.
     print('-' * 30)
 
 
-class Menu:
+class Biblioteca:
     def __init__(self):
-        self.__lista = dict()
+        self.__lista = {'jogos': {}}
 
     @property
     def lista(self):
         return self.__lista
 
     def adicionar(self, nome, data, tempo):
-        if 'jogos' not in self.__lista:
-            self.__lista['jogos'] = {nome: {'data': data, 'tempo': tempo}}
-        elif nome in self.__lista['jogos']:
-            print('O jogo já está na lista.')
+        if encontrado(self.__lista, nome):  # O jogo já existe na lista
+            return
         else:
             self.__lista['jogos'].update({nome: {'data': data, 'tempo': tempo}})
 
     def deletar(self, nome):
-        if 'jogos' not in self.__lista:
-            print('A lista está vazia.')
-        elif nome not in self.__lista['jogos']:
-            print('O jogo não existe na lista.')
+        if nao_encontrado(self.__lista, nome):  # O jogo não existe na lista
+            return
         else:
             del self.__lista['jogos'][nome]
 
     def pesquisar(self, nome):
-        if nome not in self.__lista['jogos']:
-            print('O jogo não existe na lista.')
+        if nao_encontrado(self.__lista, nome):  # O jogo não existe na lista
+            return
         else:
             print(nome)
             for i in self.__lista['jogos'][nome].values():
                 print(i)
 
     def listar(self):
-        if self.__lista['jogos'] == {}:
-            print('A lista está vazia.')
+        if vazio(self.__lista):  # Lista vazia
+            return
         else:
             for nome in self.__lista['jogos']:
                 print(nome)
                 for i in self.__lista['jogos'][nome].values():
                     print(i)
+
+
+def encontrado(lista, nome):
+    if nome in lista['jogos']:
+        print('O jogo já está na lista.')
+        return True
+    else:
+        return False
+
+
+def nao_encontrado(lista, nome):  # O jogo não está na lista
+    if nome not in lista['jogos']:
+        print('O jogo não existe na lista.')
+        return True
+    else:
+        return False
+
+
+def vazio(lista):  # A lista está vazia
+    if lista['jogos'] == {}:
+        print('A lista está vazia.')
+        return True
+    else:
+        return False
 
 
 def leiaEnt(txt):  # Lê uma entrada e verifica se ela está dentro do parâmetro.
