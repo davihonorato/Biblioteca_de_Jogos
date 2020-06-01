@@ -2,16 +2,19 @@ from functions import *
 from time import sleep
 
 while True:
-    user = Menu()
+    user = Biblioteca()  # O usuário pode acessar a biblioteca
     while True:
         interface()
         resp = leiaEnt('Escolha uma opção: ')
         if resp == 1:
-            user.adicionar('Resident Evil', '31.05.2020', '15h22')
+            jogo = Arquivo(str(input('Nome: ')), str(input('Data: ')), str(input('Tempo Jogado: ')))
+            user.adicionar(jogo)
         elif resp == 2:
-            user.deletar('Resident Evil')
+            jogo = Arquivo(str(input('Nome: ')))
+            user.deletar(jogo)
         elif resp == 3:
-            user.pesquisar('Resident Evil')
+            jogo = Arquivo(str(input('Nome: ')))
+            user.pesquisar(jogo)
         elif resp == 4:
             user.listar()
         else:

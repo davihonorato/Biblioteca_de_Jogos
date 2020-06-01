@@ -1,10 +1,8 @@
-def interface():  # Mostra o menu com todas as opções de interação.
-    print('-' * 30)
-    print(f'{"LISTA DE JOGOS ZERADOS":^30}')
-    print('-' * 30)
-    print('ESCOLHA UMA OPÇÃO ABAIXO: ')
-    print('[ 1 ] ADICIONAR \n[ 2 ] DELETAR \n[ 3 ] PESQUISAR \n[ 4 ] VER LISTA COMPLETA \n[ 0 ] SAIR')
-    print('-' * 30)
+class Arquivo:
+    def __init__(self, nome='', data='', tempo=''):
+        self.nome = nome
+        self.data = data
+        self.tempo = tempo
 
 
 class Biblioteca:
@@ -15,11 +13,11 @@ class Biblioteca:
     def lista(self):
         return self.__lista
 
-    def adicionar(self, nome, data, tempo):
-        if encontrado(self.__lista, nome):  # O jogo já existe na lista
+    def adicionar(self, jogo):
+        if encontrado(self.__lista, jogo.nome):  # O jogo já existe na lista
             return
         else:
-            self.__lista['jogos'].update({nome: {'data': data, 'tempo': tempo}})
+            self.__lista['jogos'].update({jogo.nome: {'data': jogo.data, 'tempo': jogo.tempo}})
 
     def deletar(self, nome):
         if nao_encontrado(self.__lista, nome):  # O jogo não existe na lista
@@ -43,6 +41,15 @@ class Biblioteca:
                 print(nome)
                 for i in self.__lista['jogos'][nome].values():
                     print(i)
+
+
+def interface():  # Mostra o menu com todas as opções de interação.
+    print('-' * 30)
+    print(f'{"LISTA DE JOGOS ZERADOS":^30}')
+    print('-' * 30)
+    print('ESCOLHA UMA OPÇÃO ABAIXO: ')
+    print('[ 1 ] ADICIONAR \n[ 2 ] DELETAR \n[ 3 ] PESQUISAR \n[ 4 ] VER LISTA COMPLETA \n[ 0 ] SAIR')
+    print('-' * 30)
 
 
 def encontrado(lista, nome):
