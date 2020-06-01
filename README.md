@@ -1,6 +1,8 @@
 # Biblioteca_de_Jogos
 Algorítimo que armazena informações sobre jogos finalizados (zerados).
 
-Por uma pessoa ter a necessidade de querer saber todos os jogos que zerar a partir de determinado ano que esse programa simples, utilizando comandos básicas da linguagem Python, foi criado. Ela pode armazenar algumas informações específicas sobre cada um dos jogos zerados.
+O programa foi criado com a capacidade receber dados do usuário e alocar em algum compartimento da memória. Pode-se armazenar algumas informações específicas como título, data em que foi finalizado e tempo de jogo.
 
-*Em desenvolvimento.
+Desenvolvido utilizando ferramentas e conceitos de POO. Futuramente será adicionado uma interface interativa.
+
+OBS: Foi utilizado um ambiente de desenvolvimento integrado específico para o Python denominado Pycharm.
