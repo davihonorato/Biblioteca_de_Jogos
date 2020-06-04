@@ -41,7 +41,7 @@ class Biblioteca:
             return
         else:
             self.__lista = atualizar(self.__lista)  # atualiza a lista em ordem alfabética
-            for titulo, detalhes in self.__lista['jogos'].items():
+            for titulo, detalhes in self.__lista['jogos'].items():  # Imprime a lista dos jogos cadastrados
                 print(f'TITULO: {titulo}')
                 for key, value in detalhes.items():
                     print(f'{key}: {value}')
@@ -82,6 +82,7 @@ def vazio(lista):  # A lista está vazia
 
 def leiaEnt(txt):  # Lê uma entrada e verifica se ela está dentro do parâmetro.
     escolha = ['1', '2', '3', '4', '0']
+
     try:
         while True:
             n = str(input(txt))
@@ -97,8 +98,10 @@ def leiaEnt(txt):  # Lê uma entrada e verifica se ela está dentro do parâmetr
 
 
 def atualizar(lista):
-    lista_organizada = sorted(lista['jogos'].items(), key=itemgetter(0))
-    lista_final = {'jogos': {}}
-    for elemento in lista_organizada:
-        lista_final['jogos'].update({elemento[0]: elemento[1]})
+    lista_organizada = sorted(lista['jogos'].items(), key=itemgetter(0))  # Organiza alfabeticamente os jogos
+    lista_final = {'jogos': {}}  # Cria a lista final
+
+    for elemento in lista_organizada:  # Reorganiza todos os elementos novamente
+        lista_final['jogos'].update({elemento[0]: elemento[1]})  # elemento[0] é o titulo do jogo e elemento[1]
+        # é um dicionário contendo a data e o tempo.
     return lista_final
