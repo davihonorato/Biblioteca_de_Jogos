@@ -40,11 +40,10 @@ class Biblioteca:
         if vazio(self.__lista):  # Lista vazia
             return
         else:
-            self.__lista = sorted(self.__lista['jogos'].items(), key=itemgetter(0))  # Ordena a lista em ordem alfabética
-            for nome in self.__lista['jogos']:
-                print(nome)
-                for i in self.__lista['jogos'][nome].values():
-                    print(i)
+            self.__lista = atualizar(self.__lista)  # atualiza a lista em ordem alfabética
+            for nome, detalhes in self.__lista['jogos'].items():
+                print(f'TITULO: {nome}')
+
 
 
 def interface():  # Mostra o menu com todas as opções de interação.
@@ -64,8 +63,8 @@ def encontrado(lista, nome):
         return False
 
 
-def nao_encontrado(lista, nome):  # O jogo não está na lista
-    if nome not in lista['jogos']:
+def nao_encontrado(lista, nome1):  # O jogo não está na lista
+    if nome1 not in lista['jogos']:
         print('O jogo não existe na lista.')
         return True
     else:
@@ -84,7 +83,7 @@ def leiaEnt(txt):  # Lê uma entrada e verifica se ela está dentro do parâmetr
     escolha = ['1', '2', '3', '4', '0']
     try:
         while True:
-            n = str(input('SUA ESCOLHA: '))
+            n = str(input(txt))
             if n in escolha:
                 resp = int(n)
                 break
@@ -94,3 +93,10 @@ def leiaEnt(txt):  # Lê uma entrada e verifica se ela está dentro do parâmetr
         print('Ocorreu um erro.')
     else:
         return resp
+
+
+def atualizar(lista):
+    lista_organizada = sorted(lista['jogos'].items(), key=itemgetter(0))
+    for elemento in lista_organizada:
+        lista_final = {'jogos': {elemento[0]: elemento[1]}}
+    return lista_final

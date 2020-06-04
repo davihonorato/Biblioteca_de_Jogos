@@ -8,13 +8,14 @@ while True:
         resp = leiaEnt('Escolha uma opção: ')
         if resp == 1:
             jogo = Arquivo(str(input('Nome: ')), str(input('Data: ')), str(input('Tempo Jogado: ')))
+            print(jogo)
             user.adicionar(jogo)
         elif resp == 2:
             jogo = Arquivo(str(input('Nome: ')))
-            user.deletar(jogo)
+            user.deletar(jogo.nome)
         elif resp == 3:
             jogo = Arquivo(str(input('Nome: ')))
-            user.pesquisar(jogo)
+            user.pesquisar(jogo.nome)
         elif resp == 4:
             user.listar()
         else:
