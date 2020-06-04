@@ -20,7 +20,7 @@ class Biblioteca:
         if encontrado(self.__lista, jogo.nome):  # O jogo já existe na lista
             return
         else:
-            self.__lista['jogos'].update({jogo.nome: {'data': jogo.data, 'tempo': jogo.tempo}})
+            self.__lista['jogos'].update({jogo.nome: {'DATA': jogo.data, 'TEMPO': jogo.tempo}})
 
     def deletar(self, nome):
         if nao_encontrado(self.__lista, nome):  # O jogo não existe na lista
@@ -41,9 +41,10 @@ class Biblioteca:
             return
         else:
             self.__lista = atualizar(self.__lista)  # atualiza a lista em ordem alfabética
-            for nome, detalhes in self.__lista['jogos'].items():
-                print(f'TITULO: {nome}')
-
+            for titulo, detalhes in self.__lista['jogos'].items():
+                print(f'TITULO: {titulo}')
+                for key, value in detalhes.items():
+                    print(f'{key}: {value}')
 
 
 def interface():  # Mostra o menu com todas as opções de interação.
@@ -97,6 +98,7 @@ def leiaEnt(txt):  # Lê uma entrada e verifica se ela está dentro do parâmetr
 
 def atualizar(lista):
     lista_organizada = sorted(lista['jogos'].items(), key=itemgetter(0))
+    lista_final = {'jogos': {}}
     for elemento in lista_organizada:
-        lista_final = {'jogos': {elemento[0]: elemento[1]}}
+        lista_final['jogos'].update({elemento[0]: elemento[1]})
     return lista_final
